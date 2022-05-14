@@ -2,7 +2,8 @@
 <html>
 <head>
     <title>Khoa Công Nghệ Thông Tin - Trường Đại Học Giao Thông Vận Tải - @yield('title')</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{ mix('/css/app.css') }}"/>
     <script type="text/javascript" src="{{ mix('/js/app.js') }}"></script>
 </head>
@@ -12,27 +13,21 @@
     <!-- BEGIN header -->
     <div id="header">
         <form action="#">
-            <input type="text" name="s" id="s" value="" />
+            <input type="text" name="s" id="s" value=""/>
             <button type="submit">Search</button>
         </form>
         <div class="break"></div>
         <!-- begin logo -->
         <div class="logo">
-            <h1><a href="#">Trường Đại Học Giao Thông Vận Tải</a></h1>
-            <p>Khoa Công Nghệ Thông Tin</p>
+            <h1><a href="https://www.utc.edu.vn/">Trường Đại Học Giao Thông Vận Tải</a></h1>
+            <p><a href="{{ URL::to('/home') }}">Khoa Công Nghệ Thông Tin</a></p>
         </div>
         <!-- end logo -->
         <!-- begin categories -->
         <ul class="categories">
-            @yield('category')
-            <li><a href="#">Advertising</a></li>
-            <li><a href="#">Entertainment</a></li>
-            <li><a href="#">Fashion</a></li>
-            <li><a href="#">Lifestyle</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Pictures</a></li>
-            <li><a href="#">Resources</a></li>
-            <li><a href="#">Videos</a></li>
+            @foreach($categories as $category)
+                <li><a href="#">{{$category->name}}</a></li>
+            @endforeach
         </ul>
         <!-- end categories -->
     </div>
@@ -41,7 +36,7 @@
     <div id="content">
         <!-- begin featured -->
         @yield('content')
-        <!-- end recent posts -->
+        <!-- end featured -->
     </div>
     <!-- END content -->
     <!-- BEGIN sidebar -->
@@ -50,8 +45,8 @@
         <div class="box">
             <h2>Bài Viết Mới Nhất</h2>
             <ul class="popular">
-                <li> <a href="#">Tiêu Đề</a>
-                    <p>Nội Dung</p>
+                <li><a href="#">Tiêu Đề</a>
+                    <p>Tóm Tắt</p>
                 </li>
             </ul>
         </div>
@@ -60,16 +55,13 @@
         <div class="l">
             <!-- begin categories -->
             <div class="box">
-                <h2>Categories</h2>
+                <h2>Tag</h2>
                 <ul>
-                    @yield('category')
-                    <li><a href="#">Advertising</a></li>
-                    <li><a href="#">Fashion</a></li>
-                    <li><a href="#">Gadgets</a></li>
-                    <li><a href="#">Lifestyle</a></li>
-                    <li><a href="#">Networking</a></li>
-                    <li><a href="#">News</a></li>
-                    <li><a href="#">Sports</a></li>
+                    {{--                    @foreach()--}}
+                    <li><a href="#">Tag</a></li>
+                    <li><a href="#">Tag</a></li>
+                    <li><a href="#">Tag</a></li>
+                    <li><a href="#">Tag</a></li>
                 </ul>
             </div>
             <!-- end categories -->
@@ -116,7 +108,9 @@
 <!-- END wrapper -->
 <!-- BEGIN footer -->
 <div id="footer">
-    <p style="text-align:center" ><a href="{{ URL::to('/') }}/home">Khoa Công Nghệ Thông Tin</a> &middot;<a href="https://www.utc.edu.vn/">Trường Đại Học Giao Thông Vận Tải</a> &middot; Số 3, Cầu Giấy, Đống Đa, Hà Nội </p>
+    <p style="text-align:center"><a href="{{ URL::to('/home') }}">Khoa Công Nghệ Thông Tin</a> &middot;<a
+            href="https://www.utc.edu.vn/">Trường Đại Học Giao Thông Vận Tải</a> &middot; Số 3, Cầu Giấy, Đống Đa, Hà
+        Nội </p>
 </div>
 <!-- END footer -->
 </body>

@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
-use App\Models\ArticleCategory;
 use Illuminate\Http\Request;
 
-class ArticleController extends Controller
+class ArticleCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,6 @@ class ArticleController extends Controller
     public function index()
     {
         //
-        $articles = Article::all();
-        return view('users.home')->with('articles',$articles);
     }
 
     /**
@@ -50,8 +46,6 @@ class ArticleController extends Controller
     public function show($id)
     {
         //
-        $category = ArticleCategory::all();
-        return view('users.article_detail')->with('article' ,Article::findOrFail($id))->with('categories', $category);
     }
 
     /**
