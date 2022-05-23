@@ -102,9 +102,9 @@ class ArticleController extends AdminController
         $form = new Form(new Article());
 
         $form->text('title', __('Title'));
-        $form->textarea('summary', __('Summary'));
-        $form->textarea('content', __('Content'));
         $form->image('image')->uniqueName();
+        $form->ckeditor('summary');
+        $form->ckeditor('content');
         $form->hidden('author_id');
         $form->select('category_id', __('Category'))->options(Category::all()->pluck('name', 'id'));
         $form->number('status', __('Status'))->default(1);
