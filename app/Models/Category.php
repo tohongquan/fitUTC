@@ -14,7 +14,7 @@ class ArticleCategory extends Model
     /**
      * Get the article category for the article.
      */
-    public function articles()
+    public function articles(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(Article::class);
     }
