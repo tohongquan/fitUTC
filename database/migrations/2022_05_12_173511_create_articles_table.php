@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->char('title',100);
             $table->text('summary');
-            $table->text('image_path')->nullable(false)->change();
+            $table->text('image')->nullable(false)->change();
             $table->text('content');
-            $table->bigInteger('article_category_id')->nullable(false)->change();
-            $table->bigInteger('author_id')->nullable(false)->change();
+            $table->bigInteger('category_id')->nullable(false)->change();
+            $table->bigInteger('author_id')->nullable( false)->change();
             $table->integer('status')->default(1);
             $table->timestamps();
         });

@@ -66,13 +66,13 @@
             </div>
             <!-- end categories -->
             <!-- begin meta -->
-            <div class="box">
-                <h2>Meta</h2>
-                <ul>
-                    <li><a href="#">Log in</a></li>
-                    <li><a href="#">Valid XHTML</a></li>
-                </ul>
-            </div>
+{{--            <div class="box">--}}
+{{--                <h2>Meta</h2>--}}
+{{--                <ul>--}}
+{{--                    <li><a href="#">Log in</a></li>--}}
+{{--                    <li><a href="#">Valid XHTML</a></li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
             <!-- end meta -->
         </div>
         <!-- END left -->
@@ -90,15 +90,15 @@
                 </ul>
             </div>
             <!-- end archives -->
-            <!-- begin blogroll -->
-            <div class="box">
-                <h2>Blogroll</h2>
-                <ul>
-                    <li><a href="#">Documentation</a></li>
-                    <li><a href="#">Suggest Ideas</a></li>
-                    <li><a href="#">Support Forum</a></li>
-                </ul>
-            </div>
+{{--            <!-- begin blogroll -->--}}
+{{--            <div class="box">--}}
+{{--                <h2>Blogroll</h2>--}}
+{{--                <ul>--}}
+{{--                    <li><a href="#">Documentation</a></li>--}}
+{{--                    <li><a href="#">Suggest Ideas</a></li>--}}
+{{--                    <li><a href="#">Support Forum</a></li>--}}
+{{--                </ul>--}}
+{{--            </div>--}}
             <!-- end archives -->
         </div>
         <!-- END right -->

@@ -1,9 +1,10 @@
 <?php
 
-use App\Admin\Controllers\ArticleCategoryController;
+use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\ArticleController;
 use App\Admin\Controllers\AuthorController;
 use App\Admin\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Routing\Router;
 
 Admin::routes();
@@ -18,6 +19,6 @@ Route::group([
     $router->get('/', 'HomeController@index')->name('home');
     $router->resource('users', UserController::class);
     $router->resource('articles', ArticleController::class);
-    $router->resource('article-categories', ArticleCategoryController::class);
+    $router->resource('categories', CategoryController::class);
     $router->resource('authors', AuthorController::class);
 });

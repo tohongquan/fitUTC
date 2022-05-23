@@ -2,13 +2,13 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\ArticleCategory;
+use App\Models\Category;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class ArticleCategoryController extends AdminController
+class CategoryController extends AdminController
 {
     /**
      * Title for current resource.
@@ -24,7 +24,7 @@ class ArticleCategoryController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new ArticleCategory());
+        $grid = new Grid(new Category());
 
         $grid->column('id', __('Id'));
         $grid->column('name', __('Name'));
@@ -43,7 +43,7 @@ class ArticleCategoryController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(ArticleCategory::findOrFail($id));
+        $show = new Show(Category::findOrFail($id));
 
         $show->field('id', __('Id'));
         $show->field('name', __('Name'));
@@ -61,7 +61,7 @@ class ArticleCategoryController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new ArticleCategory());
+        $form = new Form(new Category());
 
         $form->text('name', __('Name'));
         $form->number('status', __('Status'))->default(1);

@@ -12,23 +12,24 @@ class Article extends Model
         'title',
         'summary',
         'content',
-        'article_category_id',
+        'image',
+        'category_id',
         'author_id',
     ];
     /**
      * Get the category that owns the article.
      */
-    public function category()
+    public function category(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Article_category::class);
+        return $this->belongsTo(Category::class);
     }
 
     //
     /**
      * Get the author that owns the article.
      */
-    public function author()
+    public function user(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
-        return $this->belongsTo(Author::class);
+        return $this->belongsTo(User::class);
     }
 }

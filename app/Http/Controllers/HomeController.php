@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
-use App\Models\ArticleCategory;
+use App\Models\Category;
 
 class HomeController extends Controller
 {
@@ -15,8 +15,8 @@ class HomeController extends Controller
     public function index()
     {
         //
-        $articles = Article::all();
-        $category = ArticleCategory::all();
+        $articles = Article::latest('created_at')->get();
+        $category = Category::all();
         return view('users.home')->with('articles', $articles)->with('categories', $category);
     }
 }
