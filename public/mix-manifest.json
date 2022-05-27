@@ -1,4 +1,11 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/js/jquery.min.js": "/js/jquery.min.js",
+    "/js/breakpoints.min.js": "/js/breakpoints.min.js",
+    "/js/browser.min.js": "/js/browser.min.js",
+    "/js/main.js": "/js/main.js",
+    "/js/util.js": "/js/util.js",
+    "/css/app.css": "/css/app.css",
+    "/css/main.css": "/css/main.css",
+    "/css/fontawesome-all.min.css": "/css/fontawesome-all.min.css"
 }
