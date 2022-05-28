@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
+    use \Encore\Admin\Traits\Resizable;
     use HasFactory;
     protected $fillable = [
         'title',
@@ -32,4 +33,5 @@ class Article extends Model
     {
         return $this->belongsTo(User::class);
     }
+
 }

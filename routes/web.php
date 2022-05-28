@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +22,5 @@ Route::get('/', function () {
 
 Route::resource('home', HomeController::class);
 Route::resource('articles', ArticleController::class);
+Route::get('categories/{id}/articles',[CategoryController::class, 'show']);
+Route::get('/search/',[ArticleController::class, 'search'])->name('search');
