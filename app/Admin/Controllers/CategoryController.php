@@ -64,6 +64,9 @@ class CategoryController extends AdminController
         $form = new Form(new Category());
 
         $form->text('name', __('Name'));
+        $form->select('parent_id', __('Parent Category'))->options(
+            Category::with('children')->whereNull('parent_id')->pluck('name', 'id')
+        );
         $form->number('status', __('Status'))->default(1);
 
         return $form;

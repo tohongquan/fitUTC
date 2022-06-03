@@ -168,9 +168,39 @@
                 </header>
                 <ul>
                     <li><a href="{{ URL::to('/home') }}">Trang chủ</a></li>
-                    <li><a href="{{ URL::to('/categories') }}/1/articles">Giới thiệu</a></li>
-                    <li><a href="{{ URL::to('/categories') }}/2/articles">Tin Tức</a></li>
-                    <li><a href="{{ URL::to('/categories') }}/3/articles">Đào Tạo</a></li>
+                    {{--                    @foreach($categories as $category)--}}
+                    {{--                        <li>--}}
+                    {{--                            @if ($category->children)--}}
+                    {{--                                <span class="opener">{{ $category->name }}</span>--}}
+                    {{--                                <ul>--}}
+                    {{--                                    @foreach ($category->children as $child)--}}
+                    {{--                                    <li><a href="{{ URL::to('/categories') }}/{{ strval($child->id) }}/articles">{{ $child->name }}</a></li>--}}
+                    {{--                                    @endforeach--}}
+                    {{--                                </ul>--}}
+                    {{--                            @else--}}
+                    {{--                            <a href="{{ URL::to('/categories') }}/{{ $category->id }}/articles">{{ $category->name }}</a>--}}
+                    {{--                            @endif--}}
+                    {{--                        </li>--}}
+                    {{--                    @endforeach--}}
+                    @foreach($categories as $category)
+                        <li>
+
+                            <a href="{{ URL::to('/categories') }}/{{ $category->id }}/articles">{{ $category->name }}</a>
+
+                        </li>
+                    @endforeach
+                    @foreach($multiCategories as $category)
+                        <li>
+                            <span class="opener">{{ $category->name }}</span>
+                            <ul>
+                                @foreach ($category->children as $child)
+                                    <li>
+                                        <a href="{{ URL::to('/categories') }}/{{ strval($child->id) }}/articles">{{ $child->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </li>
+                    @endforeach
                     <li>
                         <span class="opener">Bộ Môn</span>
                         <ul>
@@ -180,8 +210,6 @@
                         </ul>
                     </li>
                     <li><a href="#">Giảng Viên</a></li>
-                    <li><a href="{{ URL::to('/categories') }}/7/articles">Nghiên Cứu Khoa Học</a></li>
-                    <li><a href="{{ URL::to('/categories') }}/5/articles">Tuyển Dụng</a></li>
                 </ul>
             </nav>
 

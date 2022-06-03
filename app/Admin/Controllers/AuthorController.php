@@ -3,7 +3,6 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Article;
-use App\Models\Author;
 use App\Models\Category;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;

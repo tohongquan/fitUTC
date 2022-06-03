@@ -9,6 +9,7 @@ class Article extends Model
 {
     use \Encore\Admin\Traits\Resizable;
     use HasFactory;
+    protected $table = 'articles';
     protected $fillable = [
         'title',
         'summary',
