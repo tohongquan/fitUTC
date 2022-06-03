@@ -3,6 +3,9 @@
 use App\Admin\Controllers\CategoryController;
 use App\Admin\Controllers\ArticleController;
 use App\Admin\Controllers\AuthorController;
+use App\Admin\Controllers\LecturersController;
+use App\Admin\Controllers\PartnerCompaniesController;
+use App\Admin\Controllers\SubjectsSetController;
 use App\Admin\Controllers\UserController;
 use App\Models\User;
 use Illuminate\Routing\Router;
@@ -21,4 +24,7 @@ Route::group([
     $router->resource('articles', ArticleController::class);
     $router->resource('categories', CategoryController::class);
     $router->resource('authors', AuthorController::class);
+    $router->resource('subjects-sets', SubjectsSetController::class);
+    $router->resource('lecturers', LecturersController::class);
+    $router->resource('partner-companies', PartnerCompaniesController::class);
 });

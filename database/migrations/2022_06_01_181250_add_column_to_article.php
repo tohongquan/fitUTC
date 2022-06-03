@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::table('articles', function (Blueprint $table) {
             //
-            $table->text('image');
-            $table->bigInteger('category_id');
-            $table->bigInteger('author_id');
+//            $table->text('image');
+//            $table->bigInteger('category_id');
+//            $table->bigInteger('author_id');
         });
     }
 

@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\Models\Category;
+use App\Models\SubjectsSet;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class CategoryController extends AdminController
+class SubjectsSetController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = 'ArticleCategory';
+    protected $title = 'SubjectsSet';
 
     /**
      * Make a grid builder.
@@ -24,14 +24,12 @@ class CategoryController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new Category());
+        $grid = new Grid(new SubjectsSet());
 
         $grid->column('id', __('Id'));
+        $grid->column('code', __('Code'));
         $grid->column('name', __('Name'));
-        $grid->parent_id(__('Parent'))->display(function ($parentCategory) {
-            return ($parentCategory ? Category::find($parentCategory)->name : null);
-        });
-        $grid->column('status', __('Status'));
+        $grid->column('description', __('Description'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
 
@@ -46,17 +44,12 @@ class CategoryController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(Category::findOrFail($id));
+        $show = new Show(SubjectsSet::findOrFail($id));
 
         $show->field('id', __('Id'));
+        $show->field('code', __('Code'));
         $show->field('name', __('Name'));
-        $parentCategories = Category::all()->toArray();
-        $parentCategoriesArray = [];
-        foreach ($parentCategories as $item) {
-            $parentCategoriesArray[$item['id']] = $item['name'];
-        }
-        $show->parent_id(__('Parent category'))->using($parentCategoriesArray);
-        $show->field('status', __('Status'));
+        $show->field('description', __('Description'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
 
@@ -70,13 +63,11 @@ class CategoryController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new Category());
+        $form = new Form(new SubjectsSet());
 
+        $form->text('code', __('Code'));
         $form->text('name', __('Name'));
-        $form->select('parent_id', __('Parent Category'))->options(
-            Category::with('children')->whereNull('parent_id')->pluck('name', 'id')
-        );
-        $form->number('status', __('Status'))->default(1);
+        $form->textarea('description', __('Description'));
 
         return $form;
     }
