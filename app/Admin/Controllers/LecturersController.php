@@ -84,7 +84,7 @@ class LecturersController extends AdminController
         $form->email('email', __('Email'));
         $form->text('phone_number', __('Phone number'));
         $form->select('subject_set_id', __('Subject_Set'))->options(SubjectsSet::all()->pluck('name', 'id'));
-        $form->image('avatar', __('Avatar'))->uniqueName();
+        $form->image('avatar', __('Avatar'))->thumbnail('small', $width = 120, $height = 160);
         $form->textarea('description', __('Description'));
 
         return $form;

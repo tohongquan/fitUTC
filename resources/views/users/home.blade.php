@@ -18,6 +18,22 @@
                 </article>
             @endforeach
         </div>
+        <div style="text-align: center">
+            @if ($articles->lastPage() > 1)
+                <ul class="pagination">
+                    <li><a href="{{ $articles->url(1) }}"
+                           class="button {{ ($articles->currentPage() == 1) ? ' disabled' : '' }}">Trang trước</a></li>
+                    @for ($i = 1; $i <= $articles->lastPage(); $i++)
+                        <li><a href="{{ $articles->url($i) }}"
+                               class="page {{ ($articles->currentPage() == $i) ? ' active' : '' }}">{{ $i }}</a></li>
+                    @endfor
+                    <li><a href="{{ $articles->url($articles->lastPage()) }}"
+                           class="button {{ ($articles->currentPage() == $articles->lastPage()) ? ' disabled' : '' }}">Trang
+                            sau</a></li>
+                </ul>
+            @endif
+        </div>
+
     </section>
 @endsection
 

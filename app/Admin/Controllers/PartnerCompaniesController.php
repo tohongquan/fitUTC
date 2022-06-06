@@ -76,7 +76,7 @@ class PartnerCompaniesController extends AdminController
         $form->text('full_name', __('Full name'));
         $form->email('email', __('Email'));
         $form->text('phone_number', __('Phone number'));
-        $form->image('avatar', __('Avatar'))->uniqueName();
+        $form->image('avatar', __('Avatar'))->thumbnail('small', $width = 416, $height = 256);
         $form->textarea('description', __('Description'));
 
         return $form;

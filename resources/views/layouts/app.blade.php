@@ -147,6 +147,8 @@
 
             @yield('article')
 
+            @yield('lecturers')
+
         </div>
     </div>
 
@@ -184,9 +186,7 @@
                     {{--                    @endforeach--}}
                     @foreach($categories as $category)
                         <li>
-
                             <a href="{{ URL::to('/categories') }}/{{ $category->id }}/articles">{{ $category->name }}</a>
-
                         </li>
                     @endforeach
                     @foreach($multiCategories as $category)
@@ -201,17 +201,28 @@
                             </ul>
                         </li>
                     @endforeach
-                    <li>
-                        <span class="opener">Bộ Môn</span>
-                        <ul>
-                            <li><a href="#">Khoa Học Máy Tính</a></li>
-                            <li><a href="#">Công Nghệ Phần Mềm</a></li>
-                            <li><a href="#">Mạng Và Các HTTT</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Giảng Viên</a></li>
+                    <li><a href="{{ URL::to('/lecturers') }}">Đội ngũ giảng viên</a></li>
                 </ul>
             </nav>
+
+            <section>
+                <header class="major">
+                    <h2>Đối tác</h2>
+                </header>
+                <div class="mini-posts">
+                    @foreach ($partnerCompanies as $ele)
+                        <article>
+                            <a href="#" class="image"><img
+                                    src="{{ URL::to('/uploads') }}/{{$ele->thumbnail('small','avatar')}}" alt=""/></a>
+                            <h2>{{$ele->name}}</h2>
+                            <p>{{$ele->full_name}}</p>
+                        </article>
+                    @endforeach
+                </div>
+                <ul class="actions">
+                    <li><a href="#" class="button">Danh sách các đối tác của khoa</a></li>
+                </ul>
+            </section>
 
             <section>
                 <header class="major">
