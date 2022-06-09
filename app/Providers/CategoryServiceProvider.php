@@ -28,10 +28,9 @@ class CategoryServiceProvider extends ServiceProvider
     {
         //
         view()->composer('layouts.app', function($view) {
-            $categories = DB::table('categories')->whereNull('parent_id')->get();
-            $multiCategories = Category::has('children')->whereNull('parent_id')->get();
+            $categories = Category::with('children')->whereNull('parent_id')->get();
             $partnerCompanies = PartnerCompanies::all();
-            $view->with(['categories' => $categories,'multiCategories' => $multiCategories,'partnerCompanies' => $partnerCompanies]);
+            $view->with(['categories' => $categories,'partnerCompanies' => $partnerCompanies]);
         });
     }
 }

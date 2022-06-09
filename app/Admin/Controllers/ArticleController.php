@@ -101,8 +101,7 @@ class ArticleController extends AdminController
         $form = new Form(new Article());
 
         $form->text('title', __('Title'));
-//        $form->image('image')->thumbnail('small', $width = 416, $height = 256);
-        $form->image('image')->uniqueName();
+        $form->image('image')->thumbnail('small', $width = 416, $height = 256);
         $form->ckeditor('summary');
         $form->ckeditor('content');
         $form->hidden('author_id');

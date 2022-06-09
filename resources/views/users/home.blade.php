@@ -9,7 +9,7 @@
             @foreach($articles as $article)
                 <article>
                     <a href="{{ URL::to('/articles') }}/{{$article->id}}" class="image"><img
-                            src="{{ URL::to('/uploads') }}/{{$article->image}}" alt=""/></a>
+                            src="{{ URL::to('/uploads') }}/{{$article->thumbnail('small','image')}}" alt=""/></a>
                     <h3>{{$article->title}}</h3>
                     <p> {!! html_entity_decode($article->summary) !!}</p>
                     <ul class="actions">
@@ -44,7 +44,7 @@
             <header>
                 <h1>{{$mainArticle->title}}</h1>
             </header>
-            <p> {!! html_entity_decode($article->summary) !!}</p>
+            <p> {!! html_entity_decode($mainArticle->summary) !!}</p>
             <ul class="actions">
                 <li><a href="{{ URL::to('/articles') }}/{{$mainArticle->id}}" class="button big">Tìm hiểu thêm</a></li>
             </ul>

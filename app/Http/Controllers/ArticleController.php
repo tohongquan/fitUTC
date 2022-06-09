@@ -90,15 +90,16 @@ class ArticleController extends Controller
 
     public function search(Request $request){
         // Get the search value from the request
-        $search = $request->input('search');
+        $search = trim($request->input('search'));
 
         // Search in the title and body columns from the posts table
         $articles = Article::query()
             ->where('title', 'LIKE', "%{$search}%")
-//            ->orWhere('body', 'LIKE', "%{$search}%")
+            ->join('categories', 'categories.id', '=', 'articles.category_id')
+            ->orWhere('categories.name', 'LIKE', "%{$search}%")
             ->get();
 
-        // Return the search view with the resluts compacted
+        // Return the search view with the results compacted
         return view('users.search',)->with('articles', $articles)->with('search', $search);
     }
 }
