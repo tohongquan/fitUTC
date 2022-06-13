@@ -33,6 +33,9 @@ class PartnerCompaniesController extends AdminController
         $grid->column('phone_number', __('Phone number'));
         $url = env('APP_URL').'/uploads';
         $grid->column('avatar')->image($url, 100, 100);
+        $grid->visible_in_home_page('Visible in home page?')->display(function ($visible_in_home_page) {
+            return $visible_in_home_page ? 'Có' : 'Không';
+        });
         $grid->column('description', __('Description'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
@@ -56,6 +59,7 @@ class PartnerCompaniesController extends AdminController
         $show->field('email', __('Email'));
         $show->field('phone_number', __('Phone number'));
         $show->avatar('Avatar')->image();
+        $show->visible_in_home_page('Visible in home page?')->using(['1' => 'Có', '0' => 'Không']);
         $show->field('description', __('Description'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -77,6 +81,7 @@ class PartnerCompaniesController extends AdminController
         $form->email('email', __('Email'));
         $form->text('phone_number', __('Phone number'));
         $form->image('avatar', __('Avatar'))->thumbnail('small', $width = 416, $height = 256);
+        $form->switch('visible_in_home_page', __('Visible in home page?'));
         $form->textarea('description', __('Description'));
 
         return $form;

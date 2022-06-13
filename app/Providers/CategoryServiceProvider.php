@@ -27,10 +27,5 @@ class CategoryServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        view()->composer('layouts.app', function($view) {
-            $categories = Category::with('children')->whereNull('parent_id')->get();
-            $partnerCompanies = PartnerCompanies::all();
-            $view->with(['categories' => $categories,'partnerCompanies' => $partnerCompanies]);
-        });
     }
 }
