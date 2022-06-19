@@ -31,6 +31,8 @@
 
             @yield('lecturers')
 
+            @yield('partnerCompany')
+
         </div>
     </div>
 
@@ -87,7 +89,7 @@
                     @endforeach
                 </div>
                 <ul class="actions">
-                    <li><a href="#" class="button">Danh sách các đối tác của khoa</a></li>
+                    <li><a href="{{ URL::to('/partner-companies') }}" class="button">Danh sách các đối tác của khoa</a></li>
                 </ul>
             </section>
 
