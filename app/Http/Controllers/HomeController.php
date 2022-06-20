@@ -16,7 +16,7 @@ class HomeController extends Controller
     public function index()
     {
         //
-        $articles = Article::latest('created_at')->paginate(2);
+        $articles = Article::latest('created_at')->paginate(4);
         $mainArticle = DB::table('articles')->where('status','=','0')->first();
         $category = Category::all();
         return view('users.home')->with('articles', $articles)->with('mainArticle', $mainArticle)->with('categories', $category);

@@ -27,13 +27,23 @@ class CategoryController extends AdminController
         $grid = new Grid(new Category());
 
         $grid->column('id', __('Id'));
-        $grid->column('name', __('Name'));
-        $grid->parent_id(__('Parent'))->display(function ($parentCategory) {
+        $grid->column('name', __('Tên danh mục'));
+        $grid->parent_id(__('Danh mục cha'))->display(function ($parentCategory) {
             return ($parentCategory ? Category::find($parentCategory)->name : null);
         });
-        $grid->column('status', __('Status'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+//        $grid->column('status', __('Status'));
+        $grid->column('created_at', __('Thời gian tạo'));
+        $grid->column('updated_at', __('Thời gian cập nhật'));
+
+        $grid->filter(function($filter){
+
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            // Add a column filter
+            $filter->like('name', __('Tên danh mục'));
+
+        });
 
         return $grid;
     }
@@ -49,16 +59,16 @@ class CategoryController extends AdminController
         $show = new Show(Category::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('name', __('Name'));
+        $show->field('name', __('Tên danh mục'));
         $parentCategories = Category::all()->toArray();
         $parentCategoriesArray = [];
         foreach ($parentCategories as $item) {
             $parentCategoriesArray[$item['id']] = $item['name'];
         }
-        $show->parent_id(__('Parent category'))->using($parentCategoriesArray);
-        $show->field('status', __('Status'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        $show->parent_id(__('Danh mục cha'))->using($parentCategoriesArray);
+//        $show->field('status', __('Status'));
+        $show->field('created_at', __('Thời gian tạo'));
+        $show->field('updated_at', __('Thời gian cập nhật'));
 
         return $show;
     }
@@ -72,11 +82,11 @@ class CategoryController extends AdminController
     {
         $form = new Form(new Category());
 
-        $form->text('name', __('Name'));
-        $form->select('parent_id', __('Parent Category'))->options(
+        $form->text('name', __('Tên danh mục'));
+        $form->select('parent_id', __('Danh mục cha'))->options(
             Category::with('children')->whereNull('parent_id')->pluck('name', 'id')
         );
-        $form->number('status', __('Status'))->default(1);
+        $form->hidden('status')->default(1);
 
         return $form;
     }

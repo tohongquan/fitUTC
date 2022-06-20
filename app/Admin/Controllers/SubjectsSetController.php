@@ -27,11 +27,21 @@ class SubjectsSetController extends AdminController
         $grid = new Grid(new SubjectsSet());
 
         $grid->column('id', __('Id'));
-        $grid->column('code', __('Code'));
-        $grid->column('name', __('Name'));
-        $grid->column('description', __('Description'));
-        $grid->column('created_at', __('Created at'));
-        $grid->column('updated_at', __('Updated at'));
+        $grid->column('code', __('Mã bộ môn'));
+        $grid->column('name', __('Tên bộ môn'));
+        $grid->column('description', __('Mô tả'));
+        $grid->column('created_at', __('Thời gian tạo'));
+        $grid->column('updated_at', __('Thời gian cập nhật'));
+
+        $grid->filter(function($filter){
+
+            // Remove the default id filter
+            $filter->disableIdFilter();
+
+            // Add a column filter
+            $filter->like('name', __('Tên bộ môn'));
+
+        });
 
         return $grid;
     }
@@ -47,11 +57,11 @@ class SubjectsSetController extends AdminController
         $show = new Show(SubjectsSet::findOrFail($id));
 
         $show->field('id', __('Id'));
-        $show->field('code', __('Code'));
-        $show->field('name', __('Name'));
-        $show->field('description', __('Description'));
-        $show->field('created_at', __('Created at'));
-        $show->field('updated_at', __('Updated at'));
+        $show->field('code', __('Mã bộ môn'));
+        $show->field('name', __('Tên bộ môn'));
+        $show->field('description', __('Mô tả'));
+        $show->field('created_at', __('Thời gian tạo'));
+        $show->field('updated_at', __('Thời gian cập nhật'));
 
         return $show;
     }
@@ -65,9 +75,9 @@ class SubjectsSetController extends AdminController
     {
         $form = new Form(new SubjectsSet());
 
-        $form->text('code', __('Code'));
-        $form->text('name', __('Name'));
-        $form->textarea('description', __('Description'));
+        $form->text('code', __('Mã bộ môn'));
+        $form->text('name', __('Tên bộ môn'));
+        $form->textarea('description', __('Mô tả'));
 
         return $form;
     }
